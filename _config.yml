@@ -12,14 +12,14 @@
 
 # theme                  : "minimal-mistakes-jekyll"
 # remote_theme           : "mmistakes/minimal-mistakes"
-minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+minimal_mistakes_skin    : "dark" #"default", "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
 locale                   : "ko-KR"
-title                    : "No Title"
+title                    : "코드 중독"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
-name                     : "No name"
+name                     : "loveqoo"
 description              : ""
 url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
@@ -93,11 +93,11 @@ analytics:
 
 # Site Author
 author:
-  name             : "JK"
+  name             : "Anthony Jeong"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : #"I am an **amazing** person."
   location         : "South Of Korea"
-  email            :
+  email            : "loveqoo@outlook.com"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
