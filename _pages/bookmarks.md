@@ -1,5 +1,5 @@
 ---
-permalink: "/about/"
+permalink: "/bookmarks/"
 ---
 # Blog
 - [Jekyll Front Matter](https://jekyllrb.com/docs/configuration/front-matter-defaults/)
