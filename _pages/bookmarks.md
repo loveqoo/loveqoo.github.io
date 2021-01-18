@@ -1,5 +1,7 @@
 ---
 permalink: "/bookmarks/"
+layout: single
+author_profile: true
 ---
 # Blog
 - [Jekyll Front Matter](https://jekyllrb.com/docs/configuration/front-matter-defaults/)
