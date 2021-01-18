@@ -2,7 +2,7 @@
 permalink: "/bookmarks/"
 layout: single
 author_profile: true
-title: "나의 북마크"
+title: "bookmarks"
 ---
 
 # Blog
