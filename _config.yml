@@ -20,7 +20,7 @@ title                    : "코드 중독"
 title_separator          : "-"
 subtitle                 : "나의 고민과 노력을 기록하는 곳" # site tagline that appears below site title in masthead
 name                     : "Anthony Jeong"
-description              : "설명?"
+description              : "미래의 나를 위한 현재의 열정과 노력을 기록을 보관하는 블로그입니다"
 url                      : "https://loveqoo.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "loveqoo/loveqoo.github.io" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -209,7 +209,7 @@ sass:
 permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
 paginate_path: /page:num/
-timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone: Asia/Seoul # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 
 # Plugins (previously gems:)
