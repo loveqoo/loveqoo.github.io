@@ -93,7 +93,7 @@ analytics:
 
 # Site Author
 author:
-  name             : "Anthony JK"
+  name             : "Anthony"
   avatar           : "/assets/profile.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : #"I am an **amazing** person."
   location         : "South Of Korea"
@@ -116,7 +116,7 @@ author:
       # url: "https://github.com/"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
-      # url: "https://instagram.com/"
+      url: "https://instagram.com/anthony_inc"
 
 # Site Footer
 footer:
@@ -138,7 +138,7 @@ footer:
       # url:
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
-      # url:
+      url: https://instagram.com/anthony_inc
 
 
 # Reading Files
