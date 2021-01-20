@@ -81,3 +81,4 @@ B의 경우는,
 > `Producer-Extends` 라고 불리기도 한다. 또는 `Upper Bounded` 라고 불리기도 한다.
 
 출처: https://iosroid.tistory.com/70
+참고: https://stackoverflow.com/questions/4343202/difference-between-super-t-and-extends-t-in-java
