@@ -120,11 +120,11 @@ List<? extends Number> foo3 = new ArrayList<Double>();  // (3)
 그렇기 때문에 `extends` 제한자는 
 
 - Read Only 속성을 줄 수 있다.
+	- Immutable 클래스 설계에 쓰일 수 있다. 
+		- [코틀린의 AbstractCollection](https://github.com/JetBrains/kotlin/blob/eed0f50c5d08a34cf657df84826890e9a417b3d0/libraries/stdlib/src/kotlin/collections/AbstractCollection.kt#L15)
+	- 참고로 코틀린에서는 `out` 선언이 이와 같은 표현이다.
 - `Upper Bounds` (상한 제한) 속성이 있다고 말한다.
 	- 위의 예제에서 가장 높은 타입인 `Number` 타입으로 변성을 정의하면, 그 하위 타입의 리스트를 할당 할 수 있다.
-- Immutable 클래스 설계에 쓰일 수 있다. 
-	- [코틀린의 AbstractCollection](https://github.com/JetBrains/kotlin/blob/eed0f50c5d08a34cf657df84826890e9a417b3d0/libraries/stdlib/src/kotlin/collections/AbstractCollection.kt#L15)
-	- 참고로 코틀린에서는 `out` 선언이 이와 같은 표현이다.
 - 엘리먼트의 타입 관계가 그대로 리스트까지 전이되는 결과를 가져오므로 `공변적`이라고 말한다.
 	- `Interger ≤ Number` 일 때, `List<Interger> ≤ List<Number>` 이다.
 	- 왜 그런지는 직접 타입이 누가 더 많은 타입을 포괄하는지 확인하면 된다.
