@@ -8,7 +8,8 @@
 - `A`타입, `B`타입이 있다.
 - `A ≤ B`의 의미는 
 	- `A`가 `B`의 서브타입이라는 표현이다. 
-	- `A`보다 `B`가 더 많은 타입을 포괄한다는 뜻이다. (`B` 가 부모의 개념)
+	- `A`보다 `B`가 더 많은 타입을 포괄한다는 뜻이다.
+	- `B` 가 반드시 부모 타입이라는 것은 아니다.
 - `F`가 어떤 타입을 품고 새로운 타입으로 변환된다. (리스트와 같은 컨테이너)
 - `A ≤ B` 이고, `F(A) ≤ F(B)` 이면 공변성이다.
 - `A ≤ B` 이고, `F(B) ≤ F(A)` 이면 반공변성이다.
@@ -124,7 +125,7 @@ List<? extends Number> foo3 = new ArrayList<Double>();  // (3)
 - Immutable 클래스 설계에 쓰일 수 있다. 
 	- [코틀린의 AbstractCollection](https://github.com/JetBrains/kotlin/blob/eed0f50c5d08a34cf657df84826890e9a417b3d0/libraries/stdlib/src/kotlin/collections/AbstractCollection.kt#L15)
 	- 참고로 코틀린에서는 `out` 선언이 이와 같은 표현이다.
-- 리스트의 엘리먼트의 상속 관계가 그대로 리스트까지 전이되는 결과를 가져오므로 `공변적`이라고 말한다.
+- 엘리먼트의 타입 관계가 그대로 리스트까지 전이되는 결과를 가져오므로 `공변적`이라고 말한다.
 	- `Interger ≤ Number` 일 때, `List<Interger> ≤ List<Number>` 이다.
 	- 왜 그런지는 직접 타입이 누가 더 많은 타입을 포괄하는지 확인하면 된다.
 
@@ -203,7 +204,7 @@ List<? super Integer> foo3 = new ArrayList<Object>();  // (3)
 
 - `Lower Bounds` (하한 제한) 속성이 있다고 말한다.
 	- 위의 예제에서 `Integer` 타입으로 변성을 설정하면, 그 상위 타입의 리스트만 할당할 수 있었다.
-	- 리스트의 엘리먼트의 상속 관계가 반대로 리스트에 전이되므로 `반공변적`이라고 말한다.
+	- 엘리먼트의 타입 관계가 반대로 전이되므로 `반공변적`이라고 말한다.
 	- `Interger ≤ Number` 일 때, `List<Number> ≤ List<Interger>` 이다.
 
 ``` java
