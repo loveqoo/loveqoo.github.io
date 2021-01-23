@@ -18,7 +18,16 @@
 
 하지만 코틀린과 스칼라는 클래스 선언 시점에도 정의할 수 있다. (`Declaration-Site Variance`)
 
-# 변성을 정의하면 읽게만 할 수도 있고 쓰기만 할 수도 있다.
+# 이거 왜 누가 만들었나
+
+유명한 마틴 오더스키 외 그의 동료들이 팀([Team GJ](http://lampwww.epfl.ch/gj/))을 꾸려서 만들기 시작했다. 
+
+하지만 그 당시에는 지금처럼 복잡하지 않았다. 
+- [GJ의 튜토리얼](http://lampwww.epfl.ch/gj/Documents/gj-tutorial.pdf)의 Bound, Subtyping 섹션을 보면 알 수 있다.
+
+그리고 JDK 1.5에 반영되었다.
+
+# 변성을 정의하면 읽기만 할 수도 있고 쓰기만 할 수도 있다.
 
 ## 읽기 전에 알아두어야 할 사항
 
