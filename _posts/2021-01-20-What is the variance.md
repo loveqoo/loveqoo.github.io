@@ -290,7 +290,7 @@ public interface Function1<in P1, out R> : Function<R> {
 
 `P1`은 `Lower bounds` 이므로 
 - P1과 P1보다 더 큰 타입이 대상이지만
-- P1 타입이나 P1의 하위타입의 인스턴스만 **수정** 할 수 있다. 
+- P1 타입이나 P1의 하위타입의 인스턴스로만 **수정** 할 수 있다. 
 - 반공변성
 
 `R`은 `Upper bounds` 이므로 
