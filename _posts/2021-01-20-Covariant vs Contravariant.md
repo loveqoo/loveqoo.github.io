@@ -46,6 +46,8 @@ Apple apple = apples.get(0);
 
 그 당시 만들었던 [GJ의 튜토리얼](http://lampwww.epfl.ch/gj/Documents/gj-tutorial.pdf)을 보면 지금의 변성 설정과 매우 비슷하다는 것을 엿볼 수 있다. 와일드카드 구문을 비롯한 타입 추론 까지 가능한 컴파일러를 만들어놨다.
 
+> 이건 개인적인 생각인데, 타입추론이 필요한 이유는 컴파일에서도 필요하겠지만 컴파일 이후에 무게를 더 둔 것이라고 본다. 컴파일 이전에 타입 추론 기능으로 타입 규칙을 잘 지키는지 꼼꼼하게 검사하고, 컴파일 이후에는 (타입이 없어지만) 안전하다고 판단하고 자동으로 변환 해주는 게 아닐까.
+
 서문에 얼마 지나지 않아서 아래와 같은 문구가 있는데,
 
 > In order to keep the language simple, you are forced to do some of the work yourself: you must keep track of the fact that you have a collection of bytes, and when you extract an element from the collection you must cast it to class Byte before further processing.
