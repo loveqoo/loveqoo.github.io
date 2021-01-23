@@ -13,19 +13,56 @@
 - `A ≤ B` 이고, `F(A) ≤ F(B)` 이면 공변성이다.
 - `A ≤ B` 이고, `F(B) ≤ F(A)` 이면 반공변성이다.
 
+검색해보면 이런 정의는 차고 넘치는데, 왜 이렇게 되는지 설명하는 글을 거의 없는 것 같다.
+
+그래서 나름대로 검색 짜깁기 + 추측으로 소설을 써 본다.
+
+## 왜 필요한가?
+
+어떤 [블로그](https://schneide.blog/2015/05/11/declaration-site-and-use-site-variance-explained/)를 보면 왜 변성을 사용해야 하는지 예제를 들어 설명하고 있다.
+
+``` java
+// 사과를 담는 리스트를 만든다.
+List<Apple> apples = new ArrayList<>();
+
+// 과일을 담는 리스트로 캐스팅한다.
+List<Fruit> fruits = apples;
+
+// 과일을 담는 리스트에 오렌지를 넣는다.
+fruits.add(new Orange());
+ 
+// 여기서 오렌지가 나오면 어떻게 될까?
+Apple apple = apples.get(0);
+
+```
+
+변성을 사용하면 이러한 문제를 컴파일 시점에 차단할 수 있다고 한다. 
+
+이런 문제는 자바 뿐 아니라, C# 에서도 유효하다고 하니 잘 알아두면 좋을 것 같다.
+
+## 이거 누가 만들었나
+
+자바의 경우 유명한 마틴 오더스키 외 그의 동료들이 1996년 쯤에 팀([Team GJ](http://lampwww.epfl.ch/gj/))을 꾸려서 만들기 시작했다.
+
+그 당시 만들었던 [GJ의 튜토리얼](http://lampwww.epfl.ch/gj/Documents/gj-tutorial.pdf)을 보면 지금의 변성 설정과 매우 비슷하다는 것을 엿볼 수 있다. 와일드카드 구문을 비롯한 타입 추론 까지 가능한 컴파일러를 만들어놨다.
+
+서문에 얼마 지나지 않아서 아래와 같은 문구가 있는데,
+
+> In order to keep the language simple, you are forced to do some of the work yourself: you must keep track of the fact that you have a collection of bytes, and when you extract an element from the collection you must cast it to class Byte before further processing.
+
+그도 역시 귀차니즘으로 시작한 게 아닐까 추측해본다.
+
+이후 변성 기능은 자바에서 [2004년 JDK 1.5에 Generics의 스펙에 포함](https://en.wikipedia.org/wiki/Generics_in_Java)되어 적용되었다.
+
+> C#의 경우 [2005년에 버전 2.0에 포함](https://docs.microsoft.com/ko-kr/dotnet/csharp/whats-new/csharp-version-history)되었다고 한다.
+
+## Use-Site Variance VS Declaration-Site Variance
 
 자바는 `Use-site variance` 라고 해서, 메소드 선언 시점에만 변성을 정의 할 수 있고 클래스 선언 시점에서는 정의 할 수 없다.
 
 하지만 코틀린과 스칼라는 클래스 선언 시점에도 정의할 수 있다. (`Declaration-Site Variance`)
 
-# 이거 왜 누가 만들었나
-
-유명한 마틴 오더스키 외 그의 동료들이 팀([Team GJ](http://lampwww.epfl.ch/gj/))을 꾸려서 만들기 시작했다. 
-
-하지만 그 당시에는 지금처럼 복잡하지 않았다. 
-- [GJ의 튜토리얼](http://lampwww.epfl.ch/gj/Documents/gj-tutorial.pdf)의 Bound, Subtyping 섹션을 보면 알 수 있다.
-
-그리고 JDK 1.5에 반영되었다.
+더 알아보지 않았지만 그정도 차이랄까?
 
 # 변성을 정의하면 읽기만 할 수도 있고 쓰기만 할 수도 있다.
 
@@ -80,11 +117,11 @@ List<? extends Number> foo3 = new ArrayList<Double>();  // (3)
 그렇기 때문에 `extends` 제한자는 
 
 - Read Only 속성을 줄 수 있다.
-- `Upper Bound` (상한 제한) 속성이 있다고 말한다.
+- `Upper Bounds` (상한 제한) 속성이 있다고 말한다.
 	- 위의 예제에서 가장 높은 타입인 `Number` 타입으로 변성을 정의하면, 그 하위 타입의 리스트를 할당 할 수 있다.
 - Immutable 클래스 설계에 쓰일 수 있다. 
 	- [코틀린의 AbstractCollection](https://github.com/JetBrains/kotlin/blob/eed0f50c5d08a34cf657df84826890e9a417b3d0/libraries/stdlib/src/kotlin/collections/AbstractCollection.kt#L15)
-	- 참고로 코틀린에서는 `out` 선언으로 표현한다.
+	- 참고로 코틀린에서는 `out` 선언이 이와 같은 표현이다.
 - 리스트의 엘리먼트의 상속 관계가 그대로 리스트까지 전이되는 결과를 가져오므로 `공변적`이라고 말한다.
 	- `Interger ≤ Number` 일 때, `List<Interger> ≤ List<Number>` 이다.
 	- 왜 그런지는 직접 타입이 누가 더 많은 타입을 포괄하는지 확인하면 된다.
@@ -142,7 +179,7 @@ List<? super Integer> foo3 = new ArrayList<Object>();  // (3)
 	- (1) 때문
 - `Number` 타입의 엘리먼트를 넣을 수 없다.
 	- (1) 때문
-- 'Object' 타입의 엘리먼트를 넣을 수 없다.
+- `Object` 타입의 엘리먼트를 넣을 수 없다.
 	- (1) 때문
 
 ### 결론
@@ -150,11 +187,12 @@ List<? super Integer> foo3 = new ArrayList<Object>();  // (3)
 `List <? super T>` 는
 
 - 어떤 타입으로도 읽을 수 없다.
+	- 정확히 Object 타입으로 읽을 수 있는데, 그러면 타입을 쓰는 이유가 없다.
 - `T` 타입 또는 `T` 타입의 서브 클래스의 인스턴스만 넣을 수 있다.
 
 그렇기 때문에 `super` 제한자는
 
-- `Lower Bound` (하한 제한) 속성이 있다고 말한다.
+- `Lower Bounds` (하한 제한) 속성이 있다고 말한다.
 	- 위의 예제에서 `Integer` 타입으로 변성을 설정하면, 그 상위 타입의 리스트만 할당할 수 있었다.
 	- 리스트의 엘리먼트의 상속 관계가 반대로 리스트에 전이되므로 `반공변적`이라고 말한다.
 	- `Interger ≤ Number` 일 때, `List<Number> ≤ List<Interger>` 이다.
@@ -205,8 +243,16 @@ List<? super Number> foo3 = new ArrayList<Object>();
 
 와일드카드를 쓸 수 없다. `List<T>` 로 정의한다.
 
+어떤 곳에서는 무공변이라고 표현한다.
+
+자바는 클래스 선언에 공변 설정을 할 수 없으므로, 무공변이다.
+
 
 #### 실제 코드를 보자
+
+아래 코드는 JDK 1.8 에서 가져온 `Function` 클래스이다.
+
+`compose` 메소드 선언 시점에 공변 설정이 되어 있다.
 
 ``` java
 public interface Function<T, R> {
@@ -222,12 +268,19 @@ public interface Function<T, R> {
 ```
 
 
+아래는 파라미터 1개짜리 함수이다.
+
+
 ``` kotlin
 public interface Function1<in P1, out R> : Function<R> {
     public operator fun invoke(p1: P1): R
 }
 
 ```
+
+P1은 `Lower bounds` 이므로 P1 타입이나 P1의 하위타입의 인스턴스만 **수정** 할 수 있다. 그리고 반공변성.
+
+P2는 `Upper bounds` 이므로 R 타입이나 그보다 큰 타입으로 읽을 수 있다. 공변성.
 
 
 출처 및 참고: 
