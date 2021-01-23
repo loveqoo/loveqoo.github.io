@@ -61,7 +61,7 @@ Apple apple = apples.get(0);
 
 ## Use-Site Variance VS Declaration-Site Variance
 
-자바는 `Use-site variance` 라고 해서, 메소드 선언 시점에만 변성을 정의 할 수 있고 클래스 선언 시점에서는 정의 할 수 없다.
+자바는 `Use-Site Variance` 라고 해서, 메소드 선언 시점에만 변성을 정의 할 수 있고 클래스 선언 시점에서는 정의 할 수 없다.
 
 하지만 코틀린과 스칼라는 클래스 선언 시점에도 정의할 수 있다. (`Declaration-Site Variance`)
 
