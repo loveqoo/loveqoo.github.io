@@ -280,7 +280,7 @@ public interface Function<T, R> {
 ```
 
 
-아래는 파라미터 1개짜리 함수이다.
+아래는 파라미터 1개짜리 코틀린 함수이다.
 
 
 ``` kotlin
