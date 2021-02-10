@@ -212,14 +212,14 @@ List<? super Integer> foo3 = new ArrayList<Object>();  // (3)
 ``` java
 
 // Integer 의 타입은 1개의 타입을 수용할 수 있다. 자기 자신.
-Integer foo2 = new Number(0); // Error
 Integer foo2 = new Integer(0);
-Integer foo2 = new Double(0); // Error
+Integer foo2 = new Number(0); // Error
+Integer foo2 = new Object(0); // Error
 
 // Number 의 타입은 3개의 타입을 수용할 수 있다.
-Number foo2 = new Number(0);
 Number foo2 = new Integer(0);
-Number foo2 = new Double(0);
+Number foo2 = new Number(0);
+Number foo2 = new Object(0); // Error
 
 // List<Integer>의 타입은 3개의 타입을 포괄한다.
 List<? super Integer> foo3 = new ArrayList<Integer>(); 
